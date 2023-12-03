@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 """users.py"""
 
-from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from models import storage
+from api.v1.views import app_views
 from models.user import User
 
-
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
-def get_users():
+def get_all_users():
     """get user information for all users"""
     users = []
     for user in storage.all("User").values():
@@ -35,7 +34,7 @@ def delete_user(user_id):
         abort(404)
     user.delete()
     storage.save()
-    return (jsonify({}))
+    return jsonify({}), 200
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
@@ -65,4 +64,4 @@ def put_user(user_id):
         if attr not in ['id', 'email', 'created_at', 'updated_at']:
             setattr(user, attr, val)
     user.save()
-    return jsonify(user.to_dict())
+    return jsonify(user.to_dict()), 200
