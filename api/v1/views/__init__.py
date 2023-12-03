@@ -1,4 +1,5 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
+"""create a variable app_views which is an instance of Blueprint"""
 
 from flask import Blueprint
 
