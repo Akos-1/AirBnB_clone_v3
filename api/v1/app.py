@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""app.py to connect to API"""
+"""A bash that returns the status of our API"""
 
-import os import getenv
 from flask import Flask, jsonify
 from flask_cors import CORS
 from models import storage
