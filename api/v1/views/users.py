@@ -6,6 +6,7 @@ from models import storage
 from api.v1.views import app_views
 from models.user import User
 
+
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def get_all_users():
     """get user information for all users"""
